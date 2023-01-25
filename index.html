@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerador NTN</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+
+
+<!-- Flickity  -->
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+</head>
+<body>
+    <div class="popupFull popupPaises">
+        <h2 id="selectTitulo">SELECIONE O PAÍS DO TIME DESEJADO</h2>
+        
+        <div id="carouselPaises" class="carousel paises"
+            data-flickity='{ "wrapAround": true }'>
+            <div class="carousel-cell">
+                <img src="imagens/bandeiras/BANDEIRAInglaterra.svg" alt="Bandeira Inglaterra" loading="lazy">
+                <button id="premierLeague" class="button confirm confirmPaises">Confirmar</button>
+            </div> 
+            <div class="carousel-cell">
+                <img class="indisponivel" src="imagens/bandeiras/BandeiraBrasil.svg" alt="Bandeira Brasil" loading="lazy">
+                <button id="brasileirao" class="button confirm confirmPaises indisponivel">Confirmar</button>
+            </div>
+            <div class="carousel-cell">
+                <img class="indisponivel" src="imagens/bandeiras/BandeiraEspanha.svg" alt="Bandeira Espanha" loading="lazy">
+                <button id="laLiga" class="button confirm confirmPaises indisponivel">Confirmar</button>
+            </div>
+            <div class="carousel-cell">
+                <img class="indisponivel" src="imagens/bandeiras/BandeiraFrança.svg" alt="Bandeira França" loading="lazy">
+                <button id="ligue1" class="button confirm confirmPaises indisponivel">Confirmar</button>
+            </div>
+        </div>
+        <div id="carouselPremierLeague" class="carousel premierLeague"
+            data-flickity='{ "wrapAround": true }'>
+            <div class="carousel-cell">
+                <img src="imagens/PremierLeagueEscudos/arsenal-football-club.svg" alt="Arsenal" loading="lazy">
+                <button id="arsenal" class="button confirm confirmTime">Confirmar</button>
+            </div> 
+            <div class="carousel-cell">
+                <img src="imagens/PremierLeagueEscudos/manchester-city-football-club.svg" alt="City" loading="lazy">
+                <button id="city" class="button confirm confirmTime">Confirmar</button>
+            </div>
+            <div class="carousel-cell">
+                <img src="imagens/PremierLeagueEscudos/manchester-united-football-club.svg" alt="United" loading="lazy">
+                <button id="united" class="button confirm confirmTime">Confirmar</button>
+            </div>
+            <div class="carousel-cell">
+                <img src="imagens/PremierLeagueEscudos/liverpool-football-club.svg" alt="Liverpool" loading="lazy">
+                <button id="liverpool" class="button confirm confirmTime">Confirmar</button>
+            </div>
+        </div>
+    </div><!-- Flickity HTML init -->
+
+    <!-- ===================================================PAGINA PRINCIPAL=============================================== -->
+    <div class="container">
+        <div class="topo">
+            <h2 class="titulo">MODIFIQUE SUA TABELA</h2>
+            <div class="div-mandante-visitante">
+                <div class="button-mando mandante">
+                    <label for="inputTituloCimaMandante">
+                        <span>Time Mandante</span>
+                        <input class="button radio-mando" onclick="ultimos5cimaMandante()" id="inputTituloCimaMandante" type="radio" name="mandoDeCampo" checked>
+                    </label>
+                </div>
+                <div class="button-mando visitante">
+                    <label for="inputTituloCimaVisitante">
+                        <span>Time Visitante</span>
+                        <input class="button radio-mando" onclick="ultimos5cimaVisitante()" id="inputTituloCimaVisitante" type="radio" name="mandoDeCampo">
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label id="condicaoLabel" for="condicao">
+                    <span>Condição de Resultado</span>
+                    <div id="select">
+                        <span id="arrow-select"></span>
+                        <select onclick="condicao()" class="button" name="condicao" id="condicao">
+                            <option value="Vence">Vence</option>
+                            <option value="Vence ou Empata">Vence ou Empata</option>
+                            <option value="Empata">Empata</option>
+                            <option value="Perde ou Empata">Perde ou Empata</option>
+                            <option value="Perde">Perde</option>
+                            <option value="Qualquer Resultado">Qualquer Resultado</option>
+                        </select>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="container container-main">
+        <div class="dados row">
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha1">Linha 1</label>
+
+                    <button class="buttonIcon" onclick="iconBola1()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao1()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio1()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento1()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada1()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha1()" id="linha1" name="linha1" type="text" placeholder="Insira sua Linha 1">
+            </div>
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha2">Linha 2</label>
+
+                    <button class="buttonIcon" onclick="iconBola2()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao2()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio2()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento2()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada2()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha2()" id="linha2" name="linha2" type="text" placeholder="Insira sua Linha 2">
+            </div>
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha3">Linha 3</label>
+
+                    <button class="buttonIcon" onclick="iconBola3()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao3()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio3()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento3()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada3()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha3()" id="linha3" name="linha3" type="text" placeholder="Insira sua Linha 3">
+            </div>
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha4">Linha 4</label>
+
+                    <button class="buttonIcon" onclick="iconBola4()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao4()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio4()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento4()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada4()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha4()" id="linha4" name="linha4" type="text" placeholder="Insira sua Linha 4">
+            </div>
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha5">Linha 5</label>
+
+                    <button class="buttonIcon" onclick="iconBola5()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao5()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio5()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento5()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada5()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha5()" id="linha5" name="linha5" type="text" placeholder="Insira sua Linha 5">
+            </div>
+            <div class="div-linha">
+                <div class="top-linha">
+                    <label class="linha" for="linha6">Linha 6</label>
+
+                    <button class="buttonIcon" onclick="iconBola6()"><img src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="Bola Icon"></button>
+                    <button class="buttonIcon" onclick="iconCartao6()"><img style="width: 20px;"  src="imagens/icons/CartãoIcons.png" alt="Cartão Icon"></button>
+                    <button class="buttonIcon" onclick="iconEscanteio6()"><img style="width: 28px;" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="Escanteio Icon"></button>
+                    <button class="buttonIcon" onclick="iconImpedimento6()"><img src="imagens/icons/VectorIcons.png" alt="Impedimento Icon"></button>
+                    <button class="buttonIcon" onclick="iconNada6()"><img style="width: 28px;" src="imagens/icons/icons8-sem-ideia-48.png" alt="NADA Icon"></button>
+                </div>
+                    <input class="button txtInput" onkeyup="txtLinha6()" id="linha6" name="linha6" type="text" placeholder="Insira sua Linha 6">
+            </div>
+    </div>
+<!-- ===================GERADO GERADO======= CIMA CIMA CIMA============= -->
+        <div class="gerado">
+            <div id="capture" class="box">
+                <div class="parte">
+                    <div class="tabela-cima tabela cima">
+                        <h2 id="tituloCima">Últimos 5+ jogos em casa</h2>
+                        <h4 id="casoCima">Onde: <span id="condicaoSpan">Vence</span></h4>
+                        <div class="linhas-tabela">
+                            <h3 id="nomeTimeCima" class="nomeTimeCima">Liverpool</h3>
+                            <h3 id="nomeTimeCima2" class="nomeTimeCima nomeTimeCimaBaixo"></h3>
+                            <div>
+                                <img class="imagemTime" id="imagemTime" src="" alt="Imagem do Time">
+                            </div>
+                            <div class="linha-tabela l1">
+                                <img id="imgLinha1" src="imagens/icons/icons8-bola-de-futebol-2-30 (1) 1Icons.png" alt="">
+                                <span id="spanLinha1">+1.5 gols na Partida</span>
+                            </div>
+                            <div class="linha-tabela l2">
+                                <img id="imgLinha2" src="imagens/icons/CartãoIcons.png" alt="">
+                                <span id="spanLinha2">-3.5 cartões a favor na Partida</span>
+                            </div>
+                            <div class="linha-tabela l3">
+                                <img id="imgLinha3" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="">
+                                <span id="spanLinha3">+2.5 escanteios no 1° Tempo</span>
+                            </div>
+                            <div class="linha-tabela l4">
+                                <img id="imgLinha4" src="imagens/icons/icons8-escanteio-50 1Icons.png" alt="">
+                                <span id="spanLinha4">+1.5 escanteios a favor no 2° Tempo</span>
+                            </div>
+                            <div class="linha-tabela l5">
+                                <img id="imgLinha5" src="imagens/icons/VectorIcons.png" alt="">
+                                <span id="spanLinha5">+0.5 Impedimentos contra na Partida</span>
+                            </div>
+                            <div class="linha-tabela l6">
+                                <img id="imgLinha6" src="" alt="">
+                                <span id="spanLinha6"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listras cima">
+                        <div class="listra-cima listra-maior listra maior um"></div>
+                        <div class="listra-cima listra-maior listra maior do"></div>
+                        <div class="listra-cima listra-maior listra maior tr"></div>
+                        <div class="listra-cima listra-menor fundo listra menor qu"></div>
+                        <div class="listra-cima listra-menor listra menor ci"></div>
+                        <div class="listra-cima listra-menor listra menor se"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gerar-div">
+        <button class="button gerar" onclick="printar()">Gerar Tabela!</button>
+    </div>
+    <div class="container save">
+        <div class="row salvar">
+            <div id="como-salvar">
+                <h3 class="titulo">COMO SALVAR</h3>
+                <div></div>
+            </div>
+
+            <div id="boxPrint">
+            </div>
+        </div>
+    <div>
+
+
+    
+    <script src="js/confirmPaises.js"></script>
+    <script src="js/carouselPaises.js"></script>
+    <script src="js/popuppaises.js"></script>
+    <script src="js/coresBandeira.js"></script>
+    <script src="js/icons.js"></script>
+    <script src="js/imagemTime.js"></script>
+    <script src="js/spanLinha.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script>
+        function ultimos5cimaMandante(){
+            const tituloCima = document.getElementById('tituloCima')
+            const inputTituloCimaMandante = document.getElementById('inputTituloCimaMandante').value;
+            tituloCima.innerText = "Últimos 5+ jogos em casa";
+        }
+        function ultimos5cimaVisitante(){
+            const tituloCima = document.getElementById('tituloCima')
+            const inputTituloCimaVisitante = document.getElementById('inputTituloCimaVisitante');
+            tituloCima.innerText = "Últimos 5+ jogos fora de casa";
+        }
+
+        function condicao(){
+            const casoCima = document.getElementById('condicaoSpan')
+            const condicao = document.getElementById('condicao').value;
+            casoCima.innerText = condicao
+        }
+
+    </script>
+    <!-- JQUERY -->
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script>
+        function printar(){
+            if (document.getElementById('boxPrint').childElementCount !== 0) {
+                var child = document.getElementById('boxPrint').lastElementChild; 
+                while (child) {
+                    document.getElementById('boxPrint').removeChild(child);
+                    child = document.getElementById('boxPrint').lastElementChild;
+                }
+            }
+            html2canvas(document.querySelector("#capture")).then(canvas => {
+                document.getElementById('boxPrint').appendChild(canvas)
+            });
+        }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
