@@ -16,6 +16,7 @@ body {
   /* font-family: 'Montserrat', sans-serif; */
   transition: background 0.2s linear;
   color: white;
+  background: url(imagens/BG-Gerador-NTN.png) center center;
   background-color: #1E1E1E;
 }
 
@@ -45,6 +46,7 @@ body {
   max-width: 1440px;
   display: grid;
   padding: 0 15px;
+  justify-items: center;
 }
 .container-main {
   gap: 80px;
@@ -404,16 +406,38 @@ button.indisponivel {
 
 .popupFull {
   display: none;
+  background-color: #151515;
   /* no circle */
   /* big previous & next buttons */
   /* icon color */
+}
+.popupFull::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(imagens/BG-Gerador-NTN.png) center center;
+  z-index: -10;
+}
+.popupFull #cursordiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  background: #27DD39;
+  z-index: -11;
+  border-radius: 100vh;
+  box-shadow: 0 0 20px 20px #27DD39, 0 0 30px 30px #27DD39, 0 0 50px 50px #27DD39;
 }
 .popupFull.popupPaises {
   padding-top: 150px;
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: #1E1E1E;
   z-index: 999999;
   display: flex;
   flex-direction: column;
@@ -430,17 +454,23 @@ button.indisponivel {
   position: relative;
   width: 500px;
   height: auto;
+  min-height: 210px !important;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .popupFull .carousel::before {
   content: "";
   position: absolute;
+  border-radius: 15px;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: linear-gradient(90deg, rgb(30, 30, 30) 0%, rgb(30, 30, 30) 8%, rgba(0, 0, 255, 0) 20%, rgba(0, 204, 255, 0) 80%, rgb(30, 30, 30) 92%, rgb(30, 30, 30) 100%);
+  background: linear-gradient(90deg, #151515 0%, rgba(21, 21, 21, 0.4941176471) 15%, rgba(0, 0, 255, 0) 25%, rgba(21, 21, 21, 0) 75%, rgba(21, 21, 21, 0.5058823529) 85%, #151515 100%);
   z-index: 5;
+  border-left: 4px solid #27DD39;
+  border-right: 4px solid #27DD39;
 }
 .popupFull .carousel .confirm {
   position: absolute;
@@ -469,6 +499,7 @@ button.indisponivel {
   background-size: cover;
   width: 271px;
   height: auto;
+  min-height: 300px;
 }
 .popupFull .carousel.premierLeague .carousel-cell img {
   max-height: 300px;
@@ -492,6 +523,121 @@ button.indisponivel {
 .popupFull .carousel-cell img {
   width: 100%;
   height: auto;
+}
+.popupFull .detalhesVerdes {
+  position: absolute;
+  width: 10px;
+  top: 0;
+  left: 0;
+  height: 500px;
+  background-color: #27DD39;
+  box-shadow: 0 0 40px 5px #27DD39, 0 0 70px 20px #27DD39, 0 0 100px 30px #27DD39;
+  z-index: -12;
+  transform: rotate(45deg);
+}
+.popupFull .detalhesVerdes#d4 {
+  left: 0;
+  top: 100%;
+  -webkit-animation: bgGreenX 15s linear infinite;
+          animation: bgGreenX 15s linear infinite;
+}
+.popupFull .detalhesVerdes#d5 {
+  left: 100%;
+  top: 0;
+  -webkit-animation: bgGreenY 15s linear infinite;
+          animation: bgGreenY 15s linear infinite;
+}
+@-webkit-keyframes bgGreenX {
+  0% {
+    left: 0;
+    top: 120%;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: -250px;
+    transform: rotate(0deg);
+    left: 0;
+  }
+  51% {
+    transform: rotate(90deg);
+  }
+  52% {
+    top: -250px;
+  }
+  100% {
+    top: -250px;
+    left: 200%;
+    transform: rotate(90deg);
+  }
+}
+@keyframes bgGreenX {
+  0% {
+    left: 0;
+    top: 120%;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: -250px;
+    transform: rotate(0deg);
+    left: 0;
+  }
+  51% {
+    transform: rotate(90deg);
+  }
+  52% {
+    top: -250px;
+  }
+  100% {
+    top: -250px;
+    left: 200%;
+    transform: rotate(90deg);
+  }
+}
+@-webkit-keyframes bgGreenY {
+  0% {
+    left: 100%;
+    top: -80%;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: 75%;
+    transform: rotate(0deg);
+    left: 100%;
+  }
+  51% {
+    transform: rotate(90deg);
+  }
+  52% {
+    top: 75%;
+  }
+  100% {
+    top: 75%;
+    left: -100%;
+    transform: rotate(90deg);
+  }
+}
+@keyframes bgGreenY {
+  0% {
+    left: 100%;
+    top: -80%;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: 75%;
+    transform: rotate(0deg);
+    left: 100%;
+  }
+  51% {
+    transform: rotate(90deg);
+  }
+  52% {
+    top: 75%;
+  }
+  100% {
+    top: 75%;
+    left: -100%;
+    transform: rotate(90deg);
+  }
 }
 .popupFull .flickity-button {
   z-index: 6;
@@ -566,7 +712,7 @@ button.indisponivel {
   height: 333px;
   background-color: white;
   background: url(imagens/Frame\ 2Como\ Salvar.svg) no-repeat center center;
-  background-size: cover;
+  background-size: contain;
 }
 
 #boxPrint {
@@ -591,4 +737,51 @@ button.indisponivel {
   font-style: italic;
   font-size: 2.8rem;
   text-align: center;
+}
+
+#footer {
+  margin-top: 150px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  height: auto;
+  background-color: #151515;
+  border-top: 2px solid #27DD39;
+}
+#footer h6 {
+  text-align: center;
+}
+#footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}
+#footer .container .creditos {
+  width: 100%;
+  height: auto;
+}
+#footer .container .creditos h5 {
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: center;
+}
+#footer .container .creditos ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+#footer .container .creditos ul li {
+  list-style-type: none;
+}
+#footer .container .creditos ul li a {
+  color: white;
+  text-decoration: none;
+}
+#footer .container .creditos ul li a:hover {
+  text-decoration: none;
+  color: #27DD39;
 }/*# sourceMappingURL=style.css.map */

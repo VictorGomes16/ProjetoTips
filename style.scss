@@ -13,6 +13,7 @@ body{
     /* font-family: 'Montserrat', sans-serif; */
     transition: background 0.2s linear;
     color: white;
+    background: url(imagens/BG-Gerador-NTN.png) center center;
     background-color: #1E1E1E;
 }
 :root{
@@ -42,6 +43,7 @@ body{
     max-width: 1440px;
     display: grid;
     padding: 0 15px;
+    justify-items: center;
     &-main{
         gap: 80px;
         // grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -384,12 +386,37 @@ button.indisponivel{
 }
 .popupFull{
     display: none;
+    background-color: #151515;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(imagens/BG-Gerador-NTN.png) center center;
+        z-index: -10;
+    }
+    #cursordiv{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 50px;
+        transform: translate(-50%, -50%);
+        background: #27DD39;
+        z-index: -11;
+        border-radius: 100vh;
+        box-shadow:
+        0 0 20px 20px #27DD39,
+        0 0 30px 30px #27DD39,
+        0 0 50px 50px #27DD39;
+    }
     &.popupPaises{
         padding-top: 150px;
         position: fixed;
         width: 100%;
         height: 100%;
-        background-color: #1E1E1E;
         z-index: 999999;
         display: flex;
         flex-direction: column;
@@ -408,16 +435,22 @@ button.indisponivel{
     position: relative;
     width: 500px;
     height: auto;
+    min-height: 210px !important;
+    border-radius: 15px;
+    overflow: hidden;
     &::before{
-        content: '';
+        content: "";
         position: absolute;
+        border-radius: 15px;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         pointer-events: none;
-        background: linear-gradient(90deg, rgba(30,30,30,1) 0%, rgba(30,30,30,1) 8%, rgba(0,0,255,0) 20%, rgba(0,204,255,0) 80%, rgba(30,30,30,1) 92%, rgba(30,30,30,1) 100%);
+        background: linear-gradient(90deg, #151515 0%, #1515157e 15%, rgba(0, 0, 255, 0) 25%, #15151500 75%, #15151581 85%, #151515 100%);
         z-index: 5;
+        border-left: 4px solid #27DD39;
+        border-right: 4px solid #27DD39;
     }
     .confirm{
         position: absolute;
@@ -447,6 +480,7 @@ button.indisponivel{
             background-size: cover;
             width: 271px;
             height: auto;
+            min-height: 300px;
             img{
                 max-height: 300px;
                 position: relative;
@@ -460,7 +494,7 @@ button.indisponivel{
     }
 }
   
-  .carousel-cell {
+.carousel-cell {
     position: relative;
     width: 350px;
     height: auto;
@@ -473,8 +507,77 @@ button.indisponivel{
         width: 100%;
         height: auto;
     }
-  }
-  
+}
+.detalhesVerdes{
+    position: absolute;
+    width: 10px;
+    top: -0;
+    left: 0;
+    height: 500px;
+    background-color: #27DD39;
+    box-shadow:
+    0 0 40px 5px #27DD39,
+    0 0 70px 20px #27DD39,
+    0 0 100px 30px #27DD39;
+    z-index: -12;
+    transform: rotate(45deg);
+    &#d4{
+        left: 0;
+        top: 100%;
+        animation: bgGreenX 15s linear infinite;
+    }
+    &#d5{
+        left: 100%;
+        top: 0;
+        animation: bgGreenY 15s linear infinite;
+    }
+    @keyframes bgGreenX {
+        0%{
+            left: 0;
+            top: 120%;
+            transform: rotate(0deg);
+        }
+        50%{
+            top: -250px;
+            transform: rotate(0deg);
+            left: 0;
+        }
+        51%{
+            transform: rotate(90deg);
+        }
+        52%{
+            top: -250px;
+        }
+        100%{
+            top: -250px;
+            left: 200%;
+            transform: rotate(90deg);
+        }
+    }
+    @keyframes bgGreenY {
+        0%{
+            left: 100%;
+            top: -80%;
+            transform: rotate(0deg);
+        }
+        50%{
+            top: 75%;
+            transform: rotate(0deg);
+            left: 100%;
+        }
+        51%{
+            transform: rotate(90deg);
+        }
+        52%{
+            top: 75%;
+        }
+        100%{
+            top: 75%;
+            left: -100%;
+            transform: rotate(90deg);
+        }
+    }
+}
   /* no circle */
 .flickity-button {
     // background: none;
@@ -546,7 +649,7 @@ button.indisponivel{
         height: 333px;
         background-color: white;
         background: url(imagens/Frame\ 2Como\ Salvar.svg) no-repeat center center;
-        background-size: cover;
+        background-size:contain;
     }
 }
 #boxPrint{
@@ -570,5 +673,52 @@ button.indisponivel{
         font-style: italic;
         font-size: 2.8rem;
         text-align: center;
+    }
+}
+#footer{
+    margin-top: 150px;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    height: auto;
+    background-color: #151515;
+    border-top: 2px solid #27DD39;
+    h6{
+        text-align: center;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        
+        .creditos{
+            width: 100%;
+            height: auto;
+            h5{
+                font-weight: 400;
+                font-size: 1rem;
+                text-align: center;
+            }
+            ul{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                padding: 0;
+                li{
+                    list-style-type: none;
+                    a{
+                        color: white;
+                        text-decoration: none;
+                        &:hover{
+                            text-decoration: none;
+                            color: #27DD39;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

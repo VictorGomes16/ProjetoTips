@@ -21,15 +21,18 @@
 </head>
 <body>
     <div class="popupFull popupPaises">
+        <div id="cursordiv"></div>
         <h2 id="selectTitulo">SELECIONE O PAÍS DO TIME DESEJADO</h2>
-        
+        <div class="detalhesVerdes" id="d4"></div>
+        <div class="detalhesVerdes" id="d5"></div>
+
         <div id="carouselPaises" class="carousel paises"
             data-flickity='{ "wrapAround": true }'>
-            <div class="carousel-cell">
+            <div id="inglaterra" class="carousel-cell">
                 <img src="imagens/bandeiras/BANDEIRAInglaterra.svg" alt="Bandeira Inglaterra" loading="lazy">
                 <button id="premierLeague" class="button confirm confirmPaises">Confirmar</button>
             </div> 
-            <div class="carousel-cell">
+            <div id="brasil" class="carousel-cell">
                 <img class="indisponivel" src="imagens/bandeiras/BandeiraBrasil.svg" alt="Bandeira Brasil" loading="lazy">
                 <button id="brasileirao" class="button confirm confirmPaises indisponivel">Confirmar</button>
             </div>
@@ -238,13 +241,48 @@
             <div id="boxPrint">
             </div>
         </div>
-    <div>
+    </div>
+    <footer id="footer">
+        <h6>Desenvolvido por:</h6>
+        <div class="container">
+            <div class="creditos" id="nathan">
+                <h5>Nathan Gomes</h5>
+                <nav>
+                    <ul>
+                        <li><a target="_blank" class="redes-sociais" href="https://www.linkedin.com/in/nathan-gomes-a086a9249/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href="https://www.instagram.com/nahtan.sf/"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href="https://www.facebook.com/nathan.gomes.1088893"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href="https://api.whatsapp.com/send?phone=5519998510282&text=Ol%C3%A1%20Nathan%20Gomes%2C%20"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="creditos" id="victor">
+                <h5>Victor Gomes</h5>
+                <nav>
+                    <ul>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-whatsapp"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="creditos" id="leonardo">
+                <h5>Leonardo</h5>
+                <nav>
+                    <ul>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a target="_blank" class="redes-sociais" href=""><i class="fa-brands fa-whatsapp"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
 
-
-    
     <script src="js/confirmPaises.js"></script>
-    <script src="js/carouselPaises.js"></script>
-    <script src="js/popuppaises.js"></script>
+    <script src="js/carousel.js"></script>
     <script src="js/coresBandeira.js"></script>
     <script src="js/icons.js"></script>
     <script src="js/imagemTime.js"></script>
@@ -268,6 +306,14 @@
             casoCima.innerText = condicao
         }
 
+
+        const cursorDiv = document.getElementById('cursordiv');
+        document.addEventListener('mousemove', function(e){
+            let x = e.clientX;
+            let y = e.clientY;
+            cursorDiv.style.left = x + 'px';
+            cursorDiv.style.top = y + 'px';
+        })
     </script>
     <!-- JQUERY -->
     <script src="js/jquery-3.6.1.min.js"></script>
