@@ -434,7 +434,7 @@ button.indisponivel {
   box-shadow: 0 0 20px 20px #27DD39, 0 0 30px 30px #27DD39, 0 0 50px 50px #27DD39;
 }
 .popupFull.popupPaises {
-  padding-top: 150px;
+  padding: 95px 0;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -449,6 +449,7 @@ button.indisponivel {
   font-weight: 700;
   font-style: italic;
   font-size: 2.8rem;
+  text-align: center;
 }
 .popupFull .carousel {
   position: relative;
