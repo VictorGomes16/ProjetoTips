@@ -11,7 +11,7 @@ Para acessar e testar nosso protótipo, basta acessar o link https://gerador-ntn
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
-Apenas acesso a internet e um computador. 
+Apenas um computador com acesso a internet.
 
 ### 🔧 Instalação
 
